@@ -1,7 +1,10 @@
 [project]
 name = "playground"
 version = "0.1.0"
-description = "Add your description here"
+description = "OpenClaw agent workspace with graph plotting capabilities"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "matplotlib>=3.7.0",
+    "numpy>=1.24.0",
+]
