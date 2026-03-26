@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.so
+
+# Django (if applicable)
+*.log
+*.db
+*.sqlite3
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+*.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Git
+.git/
+
+# Environment variables
+.env
+.env.example
+
+# Unit test coverage reports
+coverage/
+htmlcov/
+.tox/
+
+# Type checking with mypy
+.mypy_cache/
+*.pyi
+
+# Jupyter Notebook
+*.ipynb_checkpoints
+
+# Generated files
+*.dist
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+
+# Note: We DO NOT ignore *.toml or *.md - keep project configuration files
