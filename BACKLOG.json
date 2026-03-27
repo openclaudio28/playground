@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "task-001",
+      "title": "Data acquisition",
+      "description": "Download the Kaggle House Prices dataset (train.csv, test.csv, data_description.txt) and set it up in the repo. Do not commit the raw CSVs to git — add them to .gitignore and document how to obtain them. Write a download script instead.",
+      "acceptanceCriteria": [
+        "src/data/download.py exists and downloads train.csv and test.csv to data/raw/ when run",
+        "data/raw/ is in .gitignore",
+        "data/README.md documents all 81 columns with type and description",
+        "Running download.py end-to-end produces data/raw/train.csv (1460 rows) and data/raw/test.csv (1459 rows)"
+      ],
+      "priority": "high",
+      "status": "todo",
+      "branch": null,
+      "prNumber": null,
+      "addedBy": "human",
+      "assignedTo": null,
+      "createdAt": "2026-03-26T12:00:00Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "id": "task-002",
+      "title": "EDA notebook",
+      "description": "Exploratory data analysis on the house prices dataset. Visualise distributions, correlations, and missing values. Summarise the top findings as markdown cells so they serve as documentation.",
+      "acceptanceCriteria": [
+        "notebooks/01_eda.ipynb exists and runs end-to-end without errors",
+        "Notebook includes: SalePrice distribution (raw + log), missing value heatmap, correlation matrix of numeric features, top-15 features most correlated with SalePrice",
+        "Markdown cells summarise the 3–5 most important findings for downstream feature engineering",
+        "Notebook is committed with output cells cleared (clean diff)"
+      ],
+      "priority": "high",
+      "status": "todo",
+      "branch": null,
+      "prNumber": null,
+      "addedBy": "human",
+      "assignedTo": null,
+      "createdAt": "2026-03-26T12:01:00Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "id": "task-003",
+      "title": "Preprocessing pipeline",
+      "description": "Build a reusable preprocessing pipeline that handles missing values and encodes categorical features. This will be imported by all model scripts.",
+      "acceptanceCriteria": [
+        "src/features.py exists with a build_pipeline() function that returns a sklearn Pipeline",
+        "Pipeline handles all missing values (numeric: median imputation, categorical: most-frequent imputation)",
+        "Pipeline one-hot encodes all categorical columns",
+        "Pipeline applies log1p transform to SalePrice target",
+        "tests/test_features.py exists with at least 3 unit tests that pass with pytest",
+        "Running src/features.py as a script prints train/val shapes confirming the pipeline works"
+      ],
+      "priority": "high",
+      "status": "todo",
+      "branch": null,
+      "prNumber": null,
+      "addedBy": "human",
+      "assignedTo": null,
+      "createdAt": "2026-03-26T12:02:00Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "id": "task-004",
+      "title": "Baseline linear regression model",
+      "description": "Train a linear regression baseline using the preprocessing pipeline from task-003. Log results and establish the benchmark to beat.",
+      "acceptanceCriteria": [
+        "src/model_baseline.py exists and runs end-to-end without errors",
+        "Uses the pipeline from src/features.py",
+        "Trains on 80% of train.csv, evaluates on 20% validation split",
+        "Logs results to results/baseline.json with fields: experiment, model, val_rmse, val_mae, train_rmse, hyperparams, timestamp, branch",
+        "EXPERIMENTS.md updated with a new row for this experiment",
+        "Val RMSE is logged (no specific target — just establish the number)"
+      ],
+      "priority": "medium",
+      "status": "todo",
+      "branch": null,
+      "prNumber": null,
+      "addedBy": "human",
+      "assignedTo": null,
+      "createdAt": "2026-03-26T12:03:00Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "id": "task-005",
+      "title": "Gradient boosting model (XGBoost or LightGBM)",
+      "description": "Train a gradient boosting model using the same preprocessing pipeline. Compare against the baseline and document findings.",
+      "acceptanceCriteria": [
+        "src/model_gbm.py exists and runs end-to-end without errors",
+        "Uses XGBoost or LightGBM (whichever is easier to install via uv)",
+        "Uses the pipeline from src/features.py",
+        "Same 80/20 split as baseline for fair comparison",
+        "Logs results to results/gbm.json with same schema as baseline",
+        "EXPERIMENTS.md updated with a new row",
+        "Val RMSE is at least 5% lower than baseline (relative improvement)"
+      ],
+      "priority": "medium",
+      "status": "todo",
+      "branch": null,
+      "prNumber": null,
+      "addedBy": "human",
+      "assignedTo": null,
+      "createdAt": "2026-03-26T12:04:00Z",
+      "startedAt": null,
+      "completedAt": null
+    },
+    {
+      "id": "task-006",
+      "title": "Experiment comparison script",
+      "description": "Write a script that reads all results/*.json files and prints a ranked comparison table. This becomes the single source of truth for 'what's the best model so far'.",
+      "acceptanceCriteria": [
+        "src/compare.py exists and runs end-to-end without errors",
+        "Reads all JSON files from results/ directory",
+        "Prints a table sorted by val_rmse ascending (best first) with columns: rank, experiment, model, val_rmse, val_mae, date",
+        "Updates the 'Best Known RMSE' line in EXPERIMENTS.md to reflect the current best",
+        "Works even if results/ is empty (prints 'No experiments yet')"
+      ],
+      "priority": "low",
+      "status": "todo",
+      "branch": null,
+      "prNumber": null,
+      "addedBy": "human",
+      "assignedTo": null,
+      "createdAt": "2026-03-26T12:05:00Z",
+      "startedAt": null,
+      "completedAt": null
+    }
+  ]
+}

@@ -56,3 +56,7 @@ Thumbs.db
 *.bak
 
 # Note: We DO NOT ignore *.toml or *.md - keep project configuration files
+
+# Dataset raw files (download via src/data/download.py)
+data/raw/
+data/*.csv
